@@ -14,7 +14,8 @@ public class MyLinkedList{
     
     public String toString(){
 	String s = "";
-	s = "" + head;
+	while(){
+	}
 	return s;
     }
 

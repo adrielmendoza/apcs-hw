@@ -73,8 +73,21 @@ public class MyLinkedList{
 	temp.getNext().setNext(hold);
     }
 
-    //public String remove(int i){
-	
+    //work on the case where i = 0
+    public String remove(int i){
+	int n = 0;
+	temp = head.getNext();
+	t2 = head;
+	while(n < i){
+	    t2 = temp;
+	    temp=temp.getNext();
+	    n++;
+	}
+	t2.setNext(temp.getNext());
+    }
+}
+	    
+	    
 	 
 	
 	

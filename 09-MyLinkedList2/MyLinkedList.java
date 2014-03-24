@@ -1,8 +1,10 @@
 public class MyLinkedList{
-    private Node head;
+    private Node head;				
+    private int length;
 
     public MyLinkedList(){
-	head = null;
+	head = new Node("dummy");
+	length = 0;
     }
 
     public void add(String d){
@@ -10,11 +12,15 @@ public class MyLinkedList{
 	//head = tmp;
 	tmp.setNext(head);
 	head = tmp;
+	length++;
     }
     
     public String toString(){
-	String s = "";
-	while(){
+        String s = "";
+	Node tmp = head;
+	while (tmp != null) {
+	    s += tmp + ", ";
+	    tmp = tmp.getNext();
 	}
 	return s;
     }
@@ -36,25 +42,27 @@ public class MyLinkedList{
 	Node temp2 = temp.getNext();
 	temp.setNext(new Node(s));
 	temp.getNext().setNext(temp2);
+	length++;
     }
 
     //returns the String @ location i
     public String get(int i){
-	if(i >= length() - 1){
+	if(i >= length - 1){
 	    throw new IndexOutOfBoundsException();
 	}
 	Node temp = head;
 	if(i == 0){
-	    return temp;
+	    return temp.getData();
 	}
 	while(i > 0){
 	    temp = temp.getNext();
 	    i -= 1;
 	}
-	return temp;
+	return temp.getData();
     }
     
     public String set(int i, String s){
+	String resp = "";
 	if(i >= length() - 1){
 	    throw new IndexOutOfBoundsException();
 	}
@@ -68,30 +76,49 @@ public class MyLinkedList{
 	    temp = temp.getNext();
 	    i -= 1;
 	}
-	Node hold = temp.getNext();
-	temp.setNext(new Node(s));
-	temp.getNext().setNext(hold);
+	resp += temp.getNext().getData();
+	temp.setNext(temp.getNext().getNext());
+	return resp;
     }
 
-    //work on the case where i = 0
+    //remove and return the String at i, exception on error
     public String remove(int i){
 	int n = 0;
-	temp = head.getNext();
-	t2 = head;
+	String resp = "";
+	Node temp = head.getNext();
+	Node t2 = head;
+	if(i == 0){
+	    resp += head.getData();
+	    head = head.getNext();
+	    return resp;
+	}
+	if(i >= length() - 1){
+	    throw new IndexOutOfBoundsException();
+	}
 	while(n < i){
 	    t2 = temp;
+	    resp += temp.getData();
 	    temp=temp.getNext();
 	    n++;
 	}
 	t2.setNext(temp.getNext());
+	return resp;
     }
-}
-	    
-	    
-	 
-	
-	
-	
-	
 
+    public int find(String s){
+	Node pos = head;
+	for(int i = 0; i < length; length++){
+	    if(pos.getData().equals(s)){
+		return i;
+	    }
+	    pos = pos.getNext();
+	}
+	return -1;
+    }
+    
+    public int length(){
+	return length;
+    }	
 }
+	    
+	    

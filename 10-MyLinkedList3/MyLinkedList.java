@@ -1,17 +1,26 @@
 public class MyLinkedList{
-    private Node head;				
+    private Node head;
+    private Node tail;
     private int length;
 
     public MyLinkedList(){
 	head = null;
+	tail = null;
 	length = 0;
     }
 
     public void add(String d){
-	Node tmp = new Node(d);
-	//head = tmp;
-	tmp.setNext(head);
-	head = tmp;
+	if(head == null){
+	head = new Node(d);
+	tail = head;
+	}else{
+	    Node temp = head;
+	    while(temp.getNext() != null){
+		temp = temp.getNext();
+	    }
+	    temp.setNext(new Node(d));
+	    tail = temp.getNext();
+	}
 	length++;
     }
     
@@ -34,6 +43,10 @@ public class MyLinkedList{
 	Node temp = head;
 	if(i == 0){
 	    add(s);
+	}
+	if(i == length - 1){
+	    tail.setNext(new Node(s));
+	    tail = tail.getNext();
 	}
 	while(i != 1){
 	    temp = temp.getNext();
@@ -63,7 +76,7 @@ public class MyLinkedList{
     
     public String set(int i, String s){
 	String resp = "";
-	if(i >= length() - 1){
+	if(i >= length()){
 	    throw new IndexOutOfBoundsException();
 	}
 	Node temp = head;
@@ -77,7 +90,12 @@ public class MyLinkedList{
 	    i -= 1;
 	}
 	resp += temp.getNext().getData();
-	temp.setNext(temp.getNext().getNext());
+	temp.setNext(new Node(s));
+	temp.getNext().setNext(temp.getNext().getNext());
+	if(i == length - 1){
+	    resp = tail.getData();
+	    tail = temp.getNext();
+	}
 	return resp;
     }
 

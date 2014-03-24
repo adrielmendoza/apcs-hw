@@ -10,5 +10,7 @@ public class LLDriver{
 	System.out.println(L);
 	L.add("Boo");
 	System.out.println(L);
+	L.set(3, "hi");
+	System.out.println(L);
     }
 }

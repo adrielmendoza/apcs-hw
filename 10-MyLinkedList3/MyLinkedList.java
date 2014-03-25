@@ -1,4 +1,4 @@
-public class MyLinkedList{
+public class MyLinkedList<E> implements Iterable<E>{
     private Node head;
     private Node tail;
     private int length;
@@ -9,7 +9,11 @@ public class MyLinkedList{
 	length = 0;
     }
 
-    public void add(String d){
+    public iterator<E>(){
+	return new MyLLIterator<E>(head);
+    }
+
+    public void add(E d){
 	if(head == null){
 	head = new Node(d);
 	tail = head;
@@ -36,7 +40,7 @@ public class MyLinkedList{
 
     //add @ location i (0 at front)
     //error if you try to add part to the end
-    public void add(int i, String s){
+    public void add(int i, E s){
 	if(i >= length() - 1){
 	    throw new IndexOutOfBoundsException();
 	}
@@ -59,7 +63,7 @@ public class MyLinkedList{
     }
 
     //returns the String @ location i
-    public String get(int i){
+    public E get(int i){
 	if(i >= length - 1){
 	    throw new IndexOutOfBoundsException();
 	}
@@ -74,7 +78,7 @@ public class MyLinkedList{
 	return temp.getData();
     }
     
-    public String set(int i, String s){
+    public E set(int i, E s){
 	String resp = "";
 	if(i >= length()){
 	    throw new IndexOutOfBoundsException();
@@ -100,7 +104,7 @@ public class MyLinkedList{
     }
 
     //remove and return the String at i, exception on error
-    public String remove(int i){
+    public E remove(int i){
 	int n = 0;
 	String resp = "";
 	Node temp = head.getNext();

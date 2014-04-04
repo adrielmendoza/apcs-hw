@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.*;
+
 public class MyLLIterator<E> implements Iterator{
     private Node current;
 
@@ -6,14 +9,16 @@ public class MyLLIterator<E> implements Iterator{
     }
 
     public boolean hasNext(){
-	if(current.getNext() != null){
+	if(current != null){
 	    return true;
 	}
 	return false;
     }
 
     public E next(){
-	return current.getNext();
+	E data = current.getData();
+	current = current. current.getNext();
+	return data;
     }
     
     public void remove(){}

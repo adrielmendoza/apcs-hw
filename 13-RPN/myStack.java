@@ -1,34 +1,36 @@
 public class myStack{
     private int top;
-    private String[] list;
+    private int[] list;
 
     public myStack(){
-	list = new String[10];
+	list = new int[10];
 	top = -1;
     }
     
     public void grow(){
 	if(top > list.length){
-	    String[] temp = new String[list.length+1];
+	    int[] temp = new int[list.length+1];
 	    System.arraycopy(list,0,temp,0,list.length);
 	    list = temp;
 	}
     }
 	
-    public void push(String s){
+    public void push(int i){
         grow();
-	list[top + 1] = s;
+	list[top + 1] = i;
 	top++;
     }
 
-    public String pop(){
-	String ret = list[top];
-	list[top] = null;
-	top--;
+    public int pop(){
+	int ret = list[top];
+	list[top] = 0;
+	if(top != 0){
+	    top--;
+	}
 	return ret;
     }
 
-    public String peek(){
+    public int peek(){
 	return list[top];
     }
 
@@ -38,10 +40,8 @@ public class myStack{
     
     public String toString(){
 	String resp = "";
-	for(String s: list){
-	    if(s != null){
-		resp += s + ", ";
-	    }
+        for(int i = top; i >= 0; i--){
+            resp += list[i] + ", ";
 	}
 	return resp.substring(0, resp.length()-2);
     }

@@ -23,6 +23,7 @@ public class myStack{
 
     public int pop(){
 	int ret = list[top];
+	list[top] = 0;
 	if(top != 0){
 	    top--;
 	}

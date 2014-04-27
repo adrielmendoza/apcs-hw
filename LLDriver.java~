@@ -1,7 +1,0 @@
-public class LLDriver{
-    public static void main(String[] args){
-	MyLinked List L = new MyLinkedList();
-	
-	L.add("Sully");
-    }
-}

@@ -52,5 +52,14 @@ public class BST{
 	}
     }
 
+    public void traverse(Node n){
+	if(n == null){
+	    return;
+	}
+	System.out.println(n.getData());
+	traverse(n.getLeft());
+	traverse(n.getRight());
+    }
+
 }
 

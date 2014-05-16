@@ -1,0 +1,7 @@
+Closed hashing - everything in the table
+Insert -> worst case O(n)
+       -> espected case O(1)
+       -> table MUST be sparse
+       -> h(x) must uniformly distribute keys to indices
+Traversal -> O(m) where m is the table size
+          -

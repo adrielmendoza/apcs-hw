@@ -1,0 +1,55 @@
+Final Project Stuff:
+Processing - 
+
+private int count = 0;
+private ArrayList<Thing> things = new ArrayList<Thing>();l
+//you can create classes
+class Thing {
+	private int id,x,y,dx,dy;
+	private color c;
+	public Thing(int id, int x, int y){
+		this.id = id;
+		this.x = x;
+		this.y = y;
+	c = color(random (225), random(225), random(225));	
+	dx = -1 + (int)random(3);
+	dy = -1 + (int)random(3);
+	}
+}
+
+public void setup() {
+	println("Hello world");
+	size(600,600); //changes window size
+	//background(color(255,0,0); //changes background color to red
+	background(0); //creates a black background
+	//frameRate(1); //limits to one frame a second
+	frameRate(200); //limits to 200 frames per second, may max out to a certain frameRate
+	ellipse(100,100,50,50); //creates an ellipse
+	fill(color(255, 255, 0); //changes the ellipse color
+}
+
+//this is run over and over again
+public void draw() {
+	//println("Hello world" + count); //continually prints out "Hello World"
+	//count = count + 1;
+	//println(mouseX + "," + mouseY); //prints the coordinates of the mouse
+	fill(c);
+	ellipse(x, y, 50, 50);
+	x = x + dx;
+	y = y + dy;
+	if(x<1 || x > 599) { dx = dx * -1;}
+	if(x<1 || x > 599) { dx = dx * -1;}
+}
+	
+//performs function whenever the mouse is clicked
+public void mouseClicked() {
+	//makes a polkadot when you click it
+	//color c = color( random(255), random(255), random(225));
+	//fill(c);
+	//ellipse(mouseX, mouseY, 50, 50);
+	things.add(new Thing(count, mouseX, mouseY));
+}
+	
+//performs function whenever mouse is held down
+public void mouseDragged() {
+}

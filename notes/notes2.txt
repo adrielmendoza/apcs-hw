@@ -1,0 +1,22 @@
+Notes for 5/29/14:
+
+Graph Algorithms - Search
+1. Add start node to frontier and mark as visited
+2. while frontier isn't empty and solution not found
+	n = remove next node from frontier
+	for v in each unvisited neighbor of n
+		mark r as visited
+		add r to frontier
+Breadth first Search (BFS): frontier is a queue
+Depth first Search (DFS): frontier is a stack
+^^ both of these are blind searches
+
+Guided/Heuristic search
+
+Best first search
+	ex: heuristic - minimum of the Euclidean distance from the node to the exit
+	may be substituted with Manhattan distance
+	frontier - PriorityQueue
+
+A* search:
+	cost = dist(start -> n) + estimate(n -> goal)
